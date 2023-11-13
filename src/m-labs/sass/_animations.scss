@@ -1,0 +1,53 @@
+// Vue Animations
+@use "./vars" as *;
+
+@function makeDirectionAmounts($direction, $amount) {
+  @if $direction == "top" {
+    @return (0, -#{$amount});
+  } @else if $direction == "bottom" {
+    @return (0, $amount);
+  } @else if $direction == "left" {
+    @return (-#{$amount}, 0);
+  } @else if $direction == "right" {
+    @return (#{$amount}, 0);
+  } @else {
+    @return (0, 0);
+  }
+}
+
+@each $direction in $directions {
+  .fade-#{$direction}-enter-from,
+  .fade-#{$direction}-leave-to {
+    opacity: 0;
+    transform: translate(makeDirectionAmounts($direction, $fade_amount));
+  }
+  .fade-#{$direction}-enter-active,
+  .fade-#{$direction}-leave-active {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .slide-#{$direction}-enter-from,
+  .slide-#{$direction}-leave-to {
+    transform: translate(makeDirectionAmounts($direction, $slide_amount));
+  }
+  .slide-#{$direction}-enter-active,
+  .slide-#{$direction}-leave-active {
+    transition: transform 0.2s ease;
+  }
+  .slide-2-#{$direction}-enter-from,
+  .slide-2-#{$direction}-leave-to {
+    transform: translate(makeDirectionAmounts($direction, 3 * $slide_amount));
+  }
+  .slide-2-#{$direction}-enter-active,
+  .slide-2-#{$direction}-leave-active {
+    transition: transform 0.4s ease;
+  }
+}
+
+// .slide-top-enter-from,
+// .slide-top-leave-to {
+//   transform: translateY(220%);
+// }
+// .slide-top-enter-active,
+// .slide-top-leave-active {
+//   transition: transform 0.4s ease;
+// }

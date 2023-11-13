@@ -1,0 +1,102 @@
+@use "./animations" as *;
+@import "./vars";
+@import "./functions"; // you may need to change it when the functions require configs file
+
+html[lang="ar"] {
+  --m-ui-direction: right;
+}
+
+html[lang="en"] {
+  --m-ui-direction: left;
+}
+
+body {
+  font-family: $font_en, $font_ar, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: $color_main;
+  color: $color_text;
+}
+
+/// Some Mixins and classes :
+
+%semantic-colors {
+  &.Vue {
+    --m-color-accent-h: 153;
+    --m-color-accent-s: 48%;
+    --m-color-accent-l: 49%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsl(153, 48%, 49%, 1);
+  }
+  &.Html {
+    --m-color-accent-h: 18;
+    --m-color-accent-s: 87%;
+    --m-color-accent-l: 55%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsl(18, 87%, 55%, 1);
+  }
+  &.Css, &.React {
+    --m-color-accent-h: 222;
+    --m-color-accent-s: 88%;
+    --m-color-accent-l: 55%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsl(222, 88%, 55%, 1);
+  }
+  &.Sass {
+    --m-color-accent-h: 330;
+    --m-color-accent-s: 50%;
+    --m-color-accent-l: 60%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsl(330, 50%, 60%, 1);
+  }
+  &.Js, &.Javascript {
+    --m-color-accent-h: 52;
+    --m-color-accent-s: 84%;
+    --m-color-accent-l: 63%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsl(52, 84%, 63%, 1);
+  }
+  &.danger {
+    --m-color-accent-h: 0;
+    --m-color-accent-s: 83%;
+    --m-color-accent-l: 44%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsla(0, 83%, 44%, 1);
+    --m-color-text-h: 0;
+    --m-color-text-s: 83%;
+    --m-color-text-l: 44%;
+    --m-color-text-a: 1;
+    --m-color-text: hsla(0, 83%, 44%, 1);
+  }
+  &.warning {
+    --m-color-accent-h: 60;
+    --m-color-accent-s: 66%;
+    --m-color-accent-l: 55%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsla(60, 66%, 55%, 1);
+    --m-color-onAccent: hsl(60, 82%, 21%);
+    --m-color-text-h: 60;
+    --m-color-text-s: 66%;
+    --m-color-text-l: 55%;
+    --m-color-text-a: 1;
+    --m-color-text: hsla(60, 66%, 55%, 1);
+  }
+  &.success {
+    --m-color-accent-h: 120;
+    --m-color-accent-s: 59%;
+    --m-color-accent-l: 40%;
+    --m-color-accent-a: 1;
+    --m-color-accent: hsl(120, 59%, 40%, 1);
+    --m-color-text-h: 120;
+    --m-color-text-s: 59%;
+    --m-color-text-l: 40%;
+    --m-color-text-a: 1;
+    --m-color-text: hsl(120, 59%, 40%, 1);
+  }
+}
+
+%m {
+  &.shadow {
+    box-shadow: 0 1px 4px 1px changeOpacity("text", -0.8);
+  }
+}

@@ -1,0 +1,39 @@
+/// Color Editing Functions.
+/// These 3 functions expect the name of the color (as writting in configuration) you want to get a copy of, and the amount of change in positive value for the first two.
+/// Then they return an edited version of your color.
+
+@function darker($name, $amount) {
+  $colorH: var(--m-color-#{$name}-h);
+  $colorS: var(--m-color-#{$name}-s);
+  $colorL: calc(var(--m-color-#{$name}-l) - $amount);
+  $colorA: calc(var(--m-color-#{$name}-a));
+  @return hsla($colorH, $colorS, $colorL, $colorA);
+}
+
+@function lighter($name, $amount) {
+  $colorH: var(--m-color-#{$name}-h);
+  $colorS: var(--m-color-#{$name}-s);
+  $colorL: calc(var(--m-color-#{$name}-l) + $amount);
+  $colorA: calc(var(--m-color-#{$name}-a));
+  @return hsla($colorH, $colorS, $colorL, $colorA);
+}
+
+@function changeOpacity($name, $amount) {
+  $colorH: var(--m-color-#{$name}-h);
+  $colorS: var(--m-color-#{$name}-s);
+  $colorL: calc(var(--m-color-#{$name}-l));
+  $colorA: calc(var(--m-color-#{$name}-a) + $amount);
+  @return hsla($colorH, $colorS, $colorL, $colorA);
+}
+
+/// Calculation functions :
+
+@function power($number, $exponent) {
+  $value: 1;
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+  @return $value;
+}
